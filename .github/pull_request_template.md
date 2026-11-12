@@ -18,6 +18,7 @@
 
 ## Accessibility checklist
 
+- [ ] Tested at mobile width (375px) — mobile is the primary device
 - [ ] Works with keyboard only (Tab, Shift+Tab, Enter, Space, Esc)
 - [ ] Focus is always visible
 - [ ] Text and UI contrast meet WCAG AA (4.5:1 text, 3:1 UI)
