@@ -21,8 +21,18 @@
 }
 
 .headerAction {
-  width: 100%;
+  display: none;
+}
+
+.headerAction a,
+.mobileAction {
   text-decoration: none;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
 }
 
 /* Phone: one column, in the order of the Figma mobile frame. */
@@ -167,8 +177,12 @@
   }
 
   .headerAction {
-    width: auto;
+    display: block;
     flex: none;
+  }
+
+  .mobileAction {
+    display: none;
   }
 
   .grid {

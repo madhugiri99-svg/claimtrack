@@ -62,20 +62,31 @@ export function ClaimDetailPage() {
           </p>
         </div>
         {neededDoc && (
-          <Link
-            to={`/claims/${c.id}/upload/${neededDoc.id}`}
-            className={`${buttonClassName('primary')} ${styles.headerAction}`}
-          >
-            Upload {neededDoc.name.toLowerCase()}
-          </Link>
+          <div className={styles.headerAction}>
+            <Link
+              to={`/claims/${c.id}/upload/${neededDoc.id}`}
+              className={buttonClassName('primary')}
+            >
+              Upload {neededDoc.name.toLowerCase()}
+            </Link>
+          </div>
         )}
       </div>
 
       {neededDoc && (
-        <Alert type="warning" title={`We need your ${neededDoc.name.toLowerCase()}`}>
-          Upload it{neededDoc.dueDate ? ` by ${formatDate(neededDoc.dueDate)}` : ''} so we can
-          schedule your payment.
-        </Alert>
+        // Phone: the warning comes first, then a full-width button (matches the Figma mobile frame).
+        <div className={styles.action}>
+          <Alert type="warning" title={`We need your ${neededDoc.name.toLowerCase()}`}>
+            Upload it{neededDoc.dueDate ? ` by ${formatDate(neededDoc.dueDate)}` : ''} so we can
+            schedule your payment.
+          </Alert>
+          <Link
+            to={`/claims/${c.id}/upload/${neededDoc.id}`}
+            className={`${buttonClassName('primary', true)} ${styles.mobileAction}`}
+          >
+            Upload {neededDoc.name.toLowerCase()}
+          </Link>
+        </div>
       )}
 
       <div className={styles.grid}>
