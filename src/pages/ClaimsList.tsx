@@ -122,6 +122,7 @@ export function ClaimsList({ headingLevel: Heading, headingRef }: ClaimsListProp
                   nextStep={nextStepText(c)}
                   status={c.status}
                   href={`#/claims/${c.id}`}
+                  headingLevel={Heading === 'h1' ? 'h2' : 'h3'}
                 />
               </li>
             ))}
