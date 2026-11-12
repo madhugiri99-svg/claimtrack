@@ -1,0 +1,128 @@
+.column {
+  max-width: 640px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-6) var(--spacing-4);
+  text-align: center;
+  background: var(--color-bg-surface);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.dragging {
+  border-color: var(--color-border-action);
+  background: var(--color-bg-accent-subtle);
+}
+
+.dropIcon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg-accent-subtle);
+  color: var(--color-text-accent);
+}
+
+.dragText {
+  display: none;
+}
+
+.chooseLabel {
+  text-decoration: none;
+}
+
+/* The input is visually hidden, so show its focus ring on the label. */
+.fileInput:focus-visible + .chooseLabel {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.hint {
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-line-height);
+  color: var(--color-text-secondary);
+}
+
+.selected {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.selectedLabel {
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+}
+
+/* Phone: full-width buttons, primary first. */
+.actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--spacing-2);
+}
+
+.actions > * {
+  width: 100%;
+  text-decoration: none;
+}
+
+.next {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.subheading {
+  font-size: var(--text-heading-md-size);
+  font-weight: var(--text-heading-md-weight);
+  line-height: var(--text-heading-md-line-height);
+}
+
+.steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Tablet and up: drag-and-drop hint and right-aligned buttons in a panel. */
+@media (min-width: 768px) {
+  .panel {
+    padding: var(--spacing-6);
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+  }
+
+  .dropzone {
+    padding: var(--spacing-8) var(--spacing-4);
+    background: var(--color-bg-page);
+  }
+
+  .dragText {
+    display: block;
+  }
+
+  .actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .actions > * {
+    width: auto;
+  }
+}
