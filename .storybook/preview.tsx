@@ -1,3 +1,5 @@
+import '@fontsource-variable/inter/wght.css';
+import '../src/index.css';
 import type { Preview } from '@storybook/react-vite';
 
 const preview: Preview = {
