@@ -1,0 +1,40 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.label {
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+  line-height: var(--text-label-line-height);
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: var(--spacing-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-2) var(--spacing-3) var(--spacing-2) 40px;
+  font: inherit;
+  font-size: 1rem; /* 16px stops iOS from zooming on focus */
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-strong); /* 3.3:1, meets 3:1 for UI */
+  border-radius: var(--radius-md);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}

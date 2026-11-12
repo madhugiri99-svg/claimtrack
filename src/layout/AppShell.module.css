@@ -1,0 +1,248 @@
+.shell {
+  min-height: 100vh;
+}
+
+/* ---------- Phone: top bar ---------- */
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  height: 56px;
+  padding: 0 var(--spacing-4) 0 var(--spacing-2);
+  background: var(--color-bg-brand);
+  color: var(--color-text-inverse);
+}
+
+.menuButton {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.topBar .brand {
+  margin-right: auto;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-weight: var(--text-body-strong-weight);
+  color: var(--color-text-inverse);
+}
+
+.logoMark {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: var(--color-decorative-brand-light);
+}
+
+/* ---------- Nav (panel on phone, sidebar from tablet up) ---------- */
+.sideNav {
+  position: fixed;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  width: min(280px, 85vw);
+  padding: var(--spacing-4);
+  background: var(--color-bg-brand);
+  color: var(--color-text-inverse);
+  transform: translateX(-100%);
+  visibility: hidden;
+  /* Hide only after the slide-out finishes... */
+  transition:
+    transform 200ms ease,
+    visibility 0s 200ms;
+}
+
+.sideNav.open {
+  transform: none;
+  visibility: visible;
+  /* ...but become visible immediately, so focus can move into the menu. */
+  transition:
+    transform 200ms ease,
+    visibility 0s;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 56px 0 0;
+  z-index: 25;
+  border: 0;
+  background: rgb(15 42 68 / 0.5);
+}
+
+.navBrand {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  min-height: 44px;
+  padding: 10px var(--spacing-3);
+  border-radius: var(--radius-md);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+.navLink:hover {
+  background: rgb(255 255 255 / 0.08);
+}
+
+/* Active page: background AND bold weight, not color alone. */
+.navLink[aria-current='page'] {
+  background: rgb(255 255 255 / 0.12);
+  font-weight: var(--text-body-strong-weight);
+}
+
+.navLink:focus-visible {
+  outline-color: var(--color-text-inverse);
+}
+
+.main {
+  padding: var(--spacing-6) var(--spacing-4);
+}
+
+.main:focus {
+  outline: none;
+}
+
+/* ---------- Tablet: icon-only sidebar ---------- */
+@media (min-width: 768px) {
+  .shell {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+  }
+
+  .topBar,
+  .backdrop {
+    display: none;
+  }
+
+  .sideNav {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: auto;
+    padding: var(--spacing-4) var(--spacing-3);
+    transform: none;
+    visibility: visible;
+    transition: none;
+  }
+
+  .navBrand {
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--spacing-6);
+  }
+
+  .navBrand .brandName {
+    display: none;
+  }
+
+  .navLink {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  /* Label becomes a tooltip; it stays in the DOM as the link's accessible name. */
+  .navLabel {
+    position: absolute;
+    left: calc(100% + var(--spacing-2));
+    top: 50%;
+    transform: translateY(-50%);
+    padding: var(--spacing-1) var(--spacing-2);
+    border-radius: var(--radius-sm);
+    background: var(--color-text-primary);
+    color: var(--color-text-inverse);
+    font-size: var(--text-label-size);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 120ms ease;
+  }
+
+  .navLink:hover .navLabel,
+  .navLink:focus-visible .navLabel {
+    opacity: 1;
+  }
+
+  .main {
+    padding: var(--spacing-6);
+  }
+}
+
+/* ---------- Desktop: full sidebar ---------- */
+@media (min-width: 1280px) {
+  .shell {
+    grid-template-columns: 240px 1fr;
+  }
+
+  .sideNav {
+    padding: var(--spacing-6) var(--spacing-4);
+  }
+
+  .navBrand {
+    justify-content: flex-start;
+    padding-left: var(--spacing-3);
+  }
+
+  .navBrand .brandName {
+    display: inline;
+  }
+
+  .navLink {
+    justify-content: flex-start;
+    padding: 10px var(--spacing-3);
+  }
+
+  .navLabel {
+    position: static;
+    transform: none;
+    padding: 0;
+    background: none;
+    font-size: inherit;
+    opacity: 1;
+  }
+
+  .main {
+    padding: var(--spacing-8);
+  }
+}

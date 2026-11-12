@@ -1,0 +1,187 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.heading {
+  font-size: var(--text-heading-md-size);
+  font-weight: var(--text-heading-md-weight);
+  line-height: var(--text-heading-md-line-height);
+}
+
+h1.heading {
+  font-size: var(--text-heading-lg-size);
+  line-height: var(--text-heading-lg-line-height);
+}
+
+.heading:focus {
+  outline: none;
+}
+
+.controls {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: flex-end;
+}
+
+.search {
+  flex: 1;
+  min-width: 0;
+}
+
+.selectField {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.selectLabel {
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+  line-height: var(--text-label-line-height);
+}
+
+.select {
+  min-height: 44px;
+  padding: var(--spacing-2) var(--spacing-3);
+  font: inherit;
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+.cardList {
+  display: grid;
+  gap: var(--spacing-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skeletonCard {
+  display: grid;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+.errorBlock,
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.empty {
+  padding: var(--spacing-6);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+.emptyTitle {
+  font-weight: var(--text-body-strong-weight);
+}
+
+.emptyText {
+  color: var(--color-text-secondary);
+}
+
+.tableWrap {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .cardList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-4);
+  }
+}
+
+/* Desktop: table instead of cards (matches the Figma desktop frame). */
+@media (min-width: 1280px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .search {
+    width: 320px;
+    flex: none;
+  }
+
+  .cardList:not([aria-busy]) {
+    display: none;
+  }
+
+  .tableWrap {
+    display: block;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-body-sm-size);
+    line-height: var(--text-body-sm-line-height);
+  }
+
+  .table th {
+    padding: var(--spacing-2) var(--spacing-4);
+    text-align: left;
+    font-size: var(--text-caption-size);
+    font-weight: var(--text-caption-weight);
+    color: var(--color-text-secondary);
+    background: var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  .table td {
+    padding: var(--spacing-4);
+    border-bottom: 1px solid var(--color-border-default);
+    vertical-align: middle;
+  }
+
+  .table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .table tbody tr:hover {
+    background: var(--color-bg-page);
+  }
+
+  .idLink,
+  .muted {
+    white-space: nowrap;
+  }
+
+  .idLink {
+    font-weight: var(--text-label-weight);
+    color: var(--color-text-link);
+  }
+
+  .muted {
+    color: var(--color-text-secondary);
+  }
+
+  .chevron {
+    width: 20px;
+    color: var(--color-text-secondary);
+  }
+}

@@ -9,6 +9,8 @@ type ClaimCardProps = {
   nextStep: string;
   status: ClaimStatus;
   href: string;
+  /** h3 under a page's h2 section (Overview); h2 when the list is the page's main content. */
+  headingLevel?: 'h2' | 'h3';
 };
 
 /**
@@ -16,7 +18,16 @@ type ClaimCardProps = {
  * stretched over the whole card, so the card is one tap target and one
  * tab stop, and the link's name is the claim title (not "click here").
  */
-export function ClaimCard({ claimId, type, title, meta, nextStep, status, href }: ClaimCardProps) {
+export function ClaimCard({
+  claimId,
+  type,
+  title,
+  meta,
+  nextStep,
+  status,
+  href,
+  headingLevel: Heading = 'h3',
+}: ClaimCardProps) {
   return (
     <article className={styles.card}>
       <div className={styles.header}>
@@ -25,11 +36,11 @@ export function ClaimCard({ claimId, type, title, meta, nextStep, status, href }
         </span>
         <StatusBadge status={status} />
       </div>
-      <h3 className={styles.title}>
+      <Heading className={styles.title}>
         <a href={href} className={styles.link}>
           {title}
         </a>
-      </h3>
+      </Heading>
       <p className={styles.meta}>{meta}</p>
       <p className={styles.next}>{nextStep}</p>
     </article>

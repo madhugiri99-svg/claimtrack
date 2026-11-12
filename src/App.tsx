@@ -1,35 +1,47 @@
-import { useClaims, useSummary } from './api/queries';
-import { Alert } from './components/Alert/Alert';
-import { ClaimCard } from './components/ClaimCard/ClaimCard';
+import { HashRouter, Route, Routes } from 'react-router';
+import { AppShell } from './layout/AppShell';
+import { ClaimDetailPage } from './pages/ClaimDetailPage';
+import { MyClaimsPage } from './pages/MyClaimsPage';
+import { OverviewPage } from './pages/OverviewPage';
+import { SimplePage } from './pages/SimplePage';
+import { UploadPage } from './pages/UploadPage';
 
-// Temporary page that proves the app is talking to the API.
-// Replaced by the real screens in the next pull request.
+// Hash routing (/claimtrack/#/claims/CLM-20481) works on GitHub Pages
+// without any server configuration.
 function App() {
-  const summary = useSummary();
-  const claims = useClaims({ sort: 'newest' });
-
   return (
-    <main style={{ maxWidth: 375, margin: '0 auto', padding: 16, display: 'grid', gap: 16 }}>
-      <h1>{summary.data ? `Hi, ${summary.data.firstName}` : 'ClaimTrack'}</h1>
-      {claims.isPending && <p>Loading your claims…</p>}
-      {claims.isError && (
-        <Alert type="error" title="We couldn’t load your claims" announce>
-          {claims.error.message}
-        </Alert>
-      )}
-      {claims.data?.map((c) => (
-        <ClaimCard
-          key={c.id}
-          claimId={c.id}
-          type={c.type === 'auto' ? 'Auto' : 'Home'}
-          title={c.title}
-          meta={`Adjuster: ${c.adjusterName}`}
-          nextStep={c.nextStep}
-          status={c.status}
-          href="#"
-        />
-      ))}
-    </main>
+    <HashRouter>
+      <Routes>
+        <Route element={<AppShell />}>
+          <Route index element={<OverviewPage />} />
+          <Route path="claims" element={<MyClaimsPage />} />
+          <Route path="claims/:id" element={<ClaimDetailPage />} />
+          <Route path="claims/:id/upload/:docId" element={<UploadPage />} />
+          <Route
+            path="documents"
+            element={
+              <SimplePage
+                title="Documents"
+                message="All your claim documents in one place. This page is outside the scope of this concept project; documents are shown on each claim instead."
+              />
+            }
+          />
+          <Route
+            path="help"
+            element={
+              <SimplePage
+                title="Help"
+                message="This page is outside the scope of this concept project. For questions about a claim, contact your adjuster from the claim page."
+              />
+            }
+          />
+          <Route
+            path="*"
+            element={<SimplePage title="Page not found" message="We couldn’t find that page." />}
+          />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 }
 

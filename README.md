@@ -4,6 +4,8 @@ A responsive insurance claims dashboard for **Prairie Mutual**, built in React w
 
 > **Concept project.** Prairie Mutual is a fictional client created for this brief. The data comes from a mocked REST API.
 
+**Live demo:** https://madhugiri99-svg.github.io/claimtrack/ · **Component library:** https://madhugiri99-svg.github.io/claimtrack/storybook/
+
 ## The brief
 
 Policyholders at Prairie Mutual can't easily tell what stage their claim is in, what they still need to send, or when they'll be paid, so they call. ClaimTrack gives them a self-serve claim view that works on phone, tablet and desktop and meets WCAG 2.2 AA.
@@ -16,13 +18,20 @@ The three tasks the design is judged on:
 
 ## What's in this repo
 
-| Area                                        | Where                    |
-| ------------------------------------------- | ------------------------ |
-| Design tokens (mirrors the Figma variables) | `src/tokens/`            |
-| React components + Storybook stories        | `src/components/`        |
-| Mock API (coming in a later PR)             | `src/mocks/`, `src/api/` |
-| Screens (coming in a later PR)              | `src/pages/`             |
-| Accessibility notes and test findings       | `docs/`                  |
+| Area                                        | Where                                                  |
+| ------------------------------------------- | ------------------------------------------------------ |
+| Design tokens (mirrors the Figma variables) | `src/tokens/`                                          |
+| React components + Storybook stories        | `src/components/`                                      |
+| Mock API and typed API client               | `src/mocks/`, `src/api/` ([API contract](docs/api.md)) |
+| Screens: overview, claim detail, upload     | `src/pages/`, `src/layout/`                            |
+| Accessibility notes and fixes               | [docs/accessibility.md](docs/accessibility.md)         |
+
+## Try it
+
+- **Overview:** summary, action-needed banner, search and filter. Cards on phone/tablet, a table on desktop.
+- **Claim detail:** open CLM-20481 for an active claim, or CLM-18615 for a denied claim with the reason and appeal deadline.
+- **Upload:** from CLM-20481, upload the repair estimate. Try a .txt file to see validation.
+- **Loading and errors:** add `?mock-slow` or `?mock-error=claims` before the `#` in the URL.
 
 ## Design ↔ code
 
@@ -38,7 +47,9 @@ npm run dev          # app at http://localhost:5173/claimtrack/
 npm run storybook    # component library at http://localhost:6006
 ```
 
-Other scripts: `npm run build`, `npm run lint`, `npm run typecheck`, `npm run format`.
+Other scripts: `npm run build`, `npm run lint`, `npm run typecheck`, `npm run format`, `npm run tokens`.
+
+Every push to `main` deploys the app and Storybook to GitHub Pages; pull requests run format, lint and build checks.
 
 ## How work is done
 
