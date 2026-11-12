@@ -12,7 +12,8 @@
     "build-storybook": "storybook build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "tokens": "node scripts/build-tokens.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
