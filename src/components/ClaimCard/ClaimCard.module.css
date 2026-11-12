@@ -1,0 +1,72 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+}
+
+/* Show the focus ring on the whole card when its link is focused. */
+.card:has(.link:focus-visible) {
+  outline: 3px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+}
+
+.id {
+  color: var(--color-text-secondary);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-line-height);
+}
+
+.title {
+  font-size: var(--text-body-size);
+  font-weight: var(--text-body-strong-weight);
+  line-height: var(--text-body-line-height);
+}
+
+.link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+/* Stretch the link's hit area over the whole card. */
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.meta {
+  color: var(--color-text-secondary);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-line-height);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.next {
+  color: var(--color-text-accent);
+  font-size: var(--text-label-size);
+  font-weight: var(--text-label-weight);
+  line-height: var(--text-label-line-height);
+}
