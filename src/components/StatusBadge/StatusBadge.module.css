@@ -1,0 +1,38 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-full);
+  font-size: var(--text-caption-size);
+  font-weight: var(--text-caption-weight);
+  line-height: var(--text-caption-line-height);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.approved {
+  color: var(--color-status-approved-fg);
+  background: var(--color-status-approved-bg);
+}
+
+.pending {
+  color: var(--color-status-pending-fg);
+  background: var(--color-status-pending-bg);
+}
+
+.denied {
+  color: var(--color-status-denied-fg);
+  background: var(--color-status-denied-bg);
+}
+
+.review {
+  color: var(--color-status-review-fg);
+  background: var(--color-status-review-bg);
+}
