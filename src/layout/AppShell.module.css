@@ -74,14 +74,19 @@
   color: var(--color-text-inverse);
   transform: translateX(-100%);
   visibility: hidden;
+  /* Hide only after the slide-out finishes... */
   transition:
     transform 200ms ease,
-    visibility 200ms;
+    visibility 0s 200ms;
 }
 
 .sideNav.open {
   transform: none;
   visibility: visible;
+  /* ...but become visible immediately, so focus can move into the menu. */
+  transition:
+    transform 200ms ease,
+    visibility 0s;
 }
 
 .backdrop {

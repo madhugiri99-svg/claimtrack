@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 import { Icon, type IconName } from '../components/Icon/Icon';
 import styles from './AppShell.module.css';
 
@@ -20,12 +20,6 @@ export function AppShell() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
   const nav = useRef<HTMLElement>(null);
-  const location = useLocation();
-
-  // Close the mobile menu after navigating.
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [location.pathname]);
 
   // While the mobile menu is open: focus its first link, and close on Escape.
   useEffect(() => {
@@ -77,7 +71,12 @@ export function AppShell() {
         <ul className={styles.navList}>
           {navItems.map((item) => (
             <li key={item.to}>
-              <NavLink to={item.to} end={item.end} className={styles.navLink}>
+              <NavLink
+                to={item.to}
+                end={item.end}
+                className={styles.navLink}
+                onClick={() => setMenuOpen(false)}
+              >
                 <Icon name={item.icon} size={20} />
                 <span className={styles.navLabel}>{item.label}</span>
               </NavLink>
