@@ -21,6 +21,8 @@ Query parameters for `GET /api/claims`:
 
 Errors always have the shape `{ "error": "code", "message": "Human-readable text" }`.
 
+Denied claims include a `decision` object with the reason, the policy section, and the appeal deadline, so the UI can explain what happened and what the customer can do next.
+
 Types live in `src/api/types.ts`.
 
 ## Demo switches

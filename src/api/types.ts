@@ -52,6 +52,13 @@ export type ClaimSummary = {
   actionNeeded: boolean;
 };
 
+/** Present when a claim has been denied: why, and how to appeal. */
+export type Decision = {
+  reason: string;
+  policySection: string;
+  appealBy: string; // ISO date
+};
+
 /** Full form returned by GET /api/claims/:id. */
 export type Claim = ClaimSummary & {
   incidentDate: string; // ISO date
@@ -59,6 +66,7 @@ export type Claim = ClaimSummary & {
   timeline: TimelineStep[];
   documents: ClaimDocument[];
   payout: Payout;
+  decision?: Decision;
 };
 
 export type AccountSummary = {

@@ -205,6 +205,73 @@ export const claims: Claim[] = [
       method: 'Direct deposit',
     },
   },
+  {
+    id: 'CLM-18615',
+    type: 'home',
+    title: 'Roof leak after storm',
+    status: 'denied',
+    filedDate: '2026-08-14',
+    incidentDate: '2026-08-11',
+    adjusterName: 'K. Osei',
+    nextStep: 'Review the decision · appeal by Jan 9, 2027',
+    actionNeeded: false,
+    adjuster: {
+      name: 'Kwame Osei',
+      email: 'kwame.osei@prairiemutual.example',
+      phone: '(800) 555-0177',
+      responseTime: 'Usually replies within 2 business days',
+    },
+    timeline: [
+      { id: 'filed', title: 'Claim filed', detail: 'Aug 14, 2026', state: 'completed' },
+      {
+        id: 'assigned',
+        title: 'Adjuster assigned',
+        detail: 'Aug 15, 2026 · K. Osei',
+        state: 'completed',
+      },
+      {
+        id: 'inspection',
+        title: 'Roof inspection',
+        detail: 'Completed Aug 22, 2026',
+        state: 'completed',
+      },
+      {
+        id: 'decision',
+        title: 'Decision made',
+        detail: 'Claim denied Sep 10, 2026',
+        state: 'completed',
+      },
+    ],
+    documents: [
+      {
+        id: 'doc-photos',
+        name: 'Roof photos (8)',
+        required: true,
+        status: 'received',
+        receivedDate: '2026-08-14',
+      },
+      {
+        id: 'doc-inspection',
+        name: 'Inspection report',
+        required: true,
+        status: 'received',
+        receivedDate: '2026-08-22',
+      },
+    ],
+    payout: {
+      estimate: null,
+      estimateConfirmed: false,
+      deductible: 1000,
+      amount: null,
+      method: 'Direct deposit',
+    },
+    decision: {
+      reason:
+        'The inspection found the leak came from worn roof shingles over time, not from storm damage. Gradual wear isn’t covered by your policy.',
+      policySection: 'Section 4.2, Wear and tear exclusions',
+      appealBy: '2027-01-09',
+    },
+  },
 ];
 
 export function buildSummary(list: Claim[]): AccountSummary {
