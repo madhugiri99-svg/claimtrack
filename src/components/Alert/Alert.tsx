@@ -8,16 +8,24 @@ type AlertProps = {
   type: AlertType;
   title: string;
   children: ReactNode;
+  /**
+   * Set to true only when the alert appears in response to something the user
+   * just did (a failed upload, a saved form). Then warnings and errors use
+   * role="alert" (announced immediately) and info/success use role="status"
+   * (announced politely).
+   *
+   * Leave false for alerts that are already on the page when it loads, such as
+   * an "Action needed" banner. Those are read as normal content, so screen
+   * reader users aren't interrupted every time the page opens.
+   */
+  announce?: boolean;
   className?: string;
 };
 
-/**
- * Warnings and errors use role="alert" so they are announced right away;
- * info and success use role="status" so they don't interrupt.
- * The type is also named in the title text, not only by color.
- */
-export function Alert({ type, title, children, className }: AlertProps) {
-  const role = type === 'warning' || type === 'error' ? 'alert' : 'status';
+export function Alert({ type, title, children, announce = false, className }: AlertProps) {
+  const urgent = type === 'warning' || type === 'error';
+  const role = announce ? (urgent ? 'alert' : 'status') : undefined;
+
   return (
     <div role={role} className={[styles.alert, styles[type], className].filter(Boolean).join(' ')}>
       <span className={styles.accent} aria-hidden="true" />
