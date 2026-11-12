@@ -54,5 +54,3 @@ Every push to `main` deploys the app and Storybook to GitHub Pages; pull request
 ## How work is done
 
 Every change goes through a branch and a pull request, self-reviewed before merging. Commits follow [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `chore:`, `refactor:`).
-
-Built with help from Claude (Anthropic) as an AI pair programmer; design decisions, reviews and usability testing are my own.
